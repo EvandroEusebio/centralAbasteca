@@ -151,6 +151,23 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Serviços',
+    url: '/outherService',
+    iconComponent: { name: 'cil-user' },
+    children: [
+      {
+        name: 'Ver todos',
+        url: '/outherService/show',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'adicionar',
+        url: '/outherService/add',
+        icon: 'nav-icon-bullet'
+      },
+    ]
+  },
+  {
     name: 'Provícias',
     url: '/state',
     iconComponent: { name: 'cil-cursor' },

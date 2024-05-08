@@ -9,15 +9,14 @@ import { iconSubset } from './icons/icon-subset';
   selector: 'app-root',
   template: '<router-outlet />',
   standalone: true,
-  imports: [RouterOutlet]
+  imports: [RouterOutlet],
 })
 export class AppComponent implements OnInit {
   title = 'Central Abasteça';
-
   constructor(
     private router: Router,
     private titleService: Title,
-    private iconSetService: IconSetService
+    private iconSetService: IconSetService,
   ) {
     this.titleService.setTitle(this.title);
     // iconSet singleton
@@ -30,5 +29,7 @@ export class AppComponent implements OnInit {
         return;
       }
     });
+
+    
   }
 }

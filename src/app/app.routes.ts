@@ -43,6 +43,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/countie/routes').then((m) => m.routes)
       },
       {
+        path: 'outherService',
+        loadChildren: () => import('./views/outherService/routes').then((m) => m.routes)
+      },
+      {
         path: 'forms',
         loadChildren: () => import('./views/forms/routes').then((m) => m.routes)
       },
