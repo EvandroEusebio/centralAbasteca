@@ -3,22 +3,16 @@
   <tr>
     <th scope="col">id</th>
     <th scope="col">nome</th>
+    <th scope="col">província</th>
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Luanda</td>
-  </tr>
-
-  <tr>
-    <th scope="row">1</th>
-    <td>Benguela</td>
-  </tr>
-
-  <tr>
-    <th scope="row">1</th>
-    <td>Huambo</td>
-  </tr>
+    <tr *ngFor="let item of data">
+      <td>{{ item.id }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{item.state.nome}}</td>
+    </tr>
   </tbody>
 </table>
+
+

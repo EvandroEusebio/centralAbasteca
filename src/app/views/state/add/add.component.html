@@ -1,10 +1,12 @@
-<form cForm>
+<form cForm #state="ngForm" (ngSubmit)="submitForm(state.value)">
   <div class="mb-3">
     <label cLabel for="nameState">Nome da Província</label>
     <input cFormControl
            id="nameState"
            placeholder="Nome da Província"
            type="text"
+           name="nome"
+           ngModel
     />
   </div>
 

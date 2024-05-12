@@ -6,19 +6,9 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Luanda</td>
-  </tr>
-
-  <tr>
-    <th scope="row">1</th>
-    <td>Benguela</td>
-  </tr>
-
-  <tr>
-    <th scope="row">1</th>
-    <td>Huambo</td>
-  </tr>
+    <tr *ngFor="let item of data">
+      <td>{{ item.id }}</td>
+      <td>{{ item.nome }}</td>
+    </tr>
   </tbody>
 </table>

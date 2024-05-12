@@ -178,7 +178,7 @@ export const navItems: INavData[] = [
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'adicionar',
+        name: 'Adicionar',
         url: '/state/add',
         icon: 'nav-icon-bullet'
       },
