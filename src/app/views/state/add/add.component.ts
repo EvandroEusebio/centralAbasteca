@@ -19,15 +19,17 @@ export class AddComponent {
   constructor(private http: HttpClient) { }
 
   public submitForm(data:any): void {
-    alert(JSON.stringify(data))
 
-    this.http.post<any>('http://192.168.164.112:8000/api/state/store', data).subscribe(
+    this.http.post<any>('http://65.109.224.144:8000/api/state/store', data).subscribe(
       (response) => {
+        alert(`Dados enviados com sucesso:, ${JSON.stringify(response)}`)
         console.log('Dados enviados com sucesso:', response);
+        
         // Faça qualquer manipulação necessária após o envio bem-sucedido
       },
       (error) => {
         console.error('Erro ao enviar dados:', error);
+        alert(`Erro ao buscar detalhes:, ${JSON.stringify(error.message)}`)
         // Lide com o erro adequadamente
       }
     );

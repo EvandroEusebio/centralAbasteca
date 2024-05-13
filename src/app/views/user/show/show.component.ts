@@ -1,39 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { DocsExampleComponent } from '@docs-components/public-api';
 import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, TableDirective, TableColorDirective, TableActiveDirective, BorderDirective, AlignDirective } from '@coreui/angular';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {NgFor} from '@angular/common';
 
 @Component({
     selector: 'app-user-show',
     templateUrl: './show.component.html',
     styleUrls: ['./show.component.scss'],
     standalone: true,
-    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, TableDirective, TableColorDirective, TableActiveDirective, BorderDirective, AlignDirective]
+    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, TableDirective, TableColorDirective, TableActiveDirective, BorderDirective, AlignDirective, HttpClientModule, NgFor]
 })
-export class ShowComponent {
+export class ShowComponent implements OnInit{
+  public data: any;
 
-  formCheck1 = this.formBuilder.group({
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false
-  });
-  formRadio1 = new UntypedFormGroup({
-    radio1: new UntypedFormControl('Radio1')
-  });
-
-  constructor(
-    private formBuilder: UntypedFormBuilder
-  ) { }
-
-  setCheckBoxValue(controlName: string) {
-    const prevValue = this.formCheck1.get(controlName)?.value;
-    const value = this.formCheck1.value;
-    value[controlName] = !prevValue;
-    this.formCheck1.setValue(value);
-  }
-
-  setRadioValue(value: string): void {
-    this.formRadio1.setValue({ radio1: value });
-  }
+    constructor(private http: HttpClient) { }
+  
+    ngOnInit(): void {
+      this.fetchDetails(); // Chama a função para buscar os detalhes quando o componente é inicializado
+    }
+  
+    public fetchDetails(): void {
+      this.http.get('http://65.109.224.144:8000/api/users/all').subscribe(
+        (response) => {
+          this.data = response; // Atribui os dados recebidos à propriedade 'data'
+          console.log(response)
+        },
+        (error) => {
+          console.error('Erro ao buscar detalhes:', error.message.data);
+          alert(`Erro ao buscar detalhes:, ${JSON.stringify(error.message)}`)
+        }
+      );
+    }
 }

@@ -23,13 +23,14 @@ export class ShowComponent implements OnInit{
     }
   
     public fetchDetails(): void {
-      this.http.get('http://192.168.164.112:8000/api/countie/with/state/all').subscribe(
+      this.http.get('http://65.109.224.144:8000/api/countie/with/state/all').subscribe(
         (response) => {
           this.data = response; 
           console.log(response)
         },
         (error) => {
           console.error('Erro ao buscar detalhes:', error);
+          alert(`Erro ao buscar detalhes:, ${JSON.stringify(error.message)}`)
         }
       );
     }

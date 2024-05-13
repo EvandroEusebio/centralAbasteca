@@ -37,28 +37,29 @@ export class AddComponent  implements OnInit {
     }
 
     public submitForm(data:any): void {
-      alert(JSON.stringify(data))
   
-      this.http.post<any>('http://192.168.164.112:8000/api/countie/store', data).subscribe(
+      this.http.post<any>('http://65.109.224.144:8000/api/countie/store', data).subscribe(
         (response) => {
+          alert(`Dados enviados com sucesso:, ${JSON.stringify(response)}`)
           console.log('Dados enviados com sucesso:', response);
-          // Faça qualquer manipulação necessária após o envio bem-sucedido
         },
         (error) => {
           console.error('Erro ao enviar dados:', error);
           // Lide com o erro adequadamente
+          alert(`Erro ao enviar dados:, ${JSON.stringify(error.message)}`)
         }
       );
     }
   
     public fetchDetails(): void {
-      this.http.get('http://192.168.164.112:8000/api/state/all').subscribe(
+      this.http.get('http://65.109.224.144:8000/api/state/all').subscribe(
         (response) => {
           this.data = response; // Atribui os dados recebidos à propriedade 'data'
           console.log(response)
         },
         (error) => {
           console.error('Erro ao buscar detalhes:', error);
+          alert(`Erro ao buscar detalhes:, ${JSON.stringify(error.message)}`)
         }
       );
     }
